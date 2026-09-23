@@ -1,9 +1,121 @@
     package edu.udelp;
+
+    import edu.udelp.exception.UdelpException;
+    import edu.udelp.queue.Queue;
+
+    public class Main{
+        public static void main(String[] args){
+            Queue q = new Queue();
+            imprimir(q);
+
+            q.enqueue(5);
+            imprimir(q);
+
+            q.enqueue(6);
+            imprimir(q);
+
+            q.enqueue(7);
+            imprimir(q);
+
+            int valor = q.dequeue();
+            System.out.println("Salir: "+ valor);
+            imprimir(q);
+
+            q.enqueue(8);
+            imprimir(q);
+        }
+        public static void imprimir(Queue queue){
+
+            try {
+                System.out.println(" ------..");
+                System.out.println(queue.toString());
+                System.out.println(queue.peek());
+                System.out.println();
+            }catch(UdelpException e){
+                System.out.println(e.getMessage());
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*import edu.udelp.Stack.PaginaStack;
+    import edu.udelp.model.Pagina;
+
+    /*import javax.swing.*;
     import java.util.Scanner;
 
-    public class Main {
+    import static javax.swing.JOptionPane.showInputDialog;
 
+    public class Main {
         public static void main(String[] args) {
+            PaginaStack stack = new PaginaStack();
+            PaginaStack stack2 = new PaginaStack();
+            String [] opciones={"Nueva pagina","Atras","actual","adelante","salir"};
+            boolean salir=false;
+
+            while(!salir){
+                int option = JOptionPane.showOptionDialog(
+                        null, "Selecciona una opcion", "URL",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, null
+                );
+
+            switch (option){
+                case 0:
+
+                    Pagina nueva= new Pagina();
+                    String dato= JOptionPane.showInputDialog(null,
+                            "selecciona el nombre de la pagina");
+                    nueva.setUrl(dato);
+                    stack.push(nueva);
+                    break;
+                case 1:
+                    if(!stack.isEmpty()){
+                        Pagina p= stack.pop();
+                        stack2.push(p);
+                    }
+
+                    break;
+                case 2:
+                    if(!stack.isEmpty()){
+                        JOptionPane.showMessageDialog(null,"Pagina actual: " + stack.peek());
+                    }
+                    break;
+
+                case 3:
+                    if(!stack2.isEmpty()){
+
+                        Pagina p=stack2.pop();
+                        stack2.push(p);
+                    }
+                    break;
+
+                case 4:
+                    salir=true;
+                    break;
+            }
+        }
+    }
+    }
+
+        /*public static void main(String[] args) {
 
             Scanner entrada = new Scanner(System.in);
 
